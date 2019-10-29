@@ -9,3 +9,6 @@ Environment Variables:
 * SMTP Server
 * From
 * TheHive API Information
+
+Process Pipeline:
+Hive API > Create 30/60/90 > Pandas > Create Charts (WIP) > Send via SMTP
