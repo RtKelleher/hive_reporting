@@ -268,7 +268,7 @@ class SIRPPipeline(object):
             SMTP_SERVER(str): mail server
         """
         msg = MIMEMultipart()
-        msg["From"] = "SIRP-Reminders@welltok.com"
+        msg["From"] = "SIRP-Reminders@company.com"
         msg["To"] = SENT_TO
         msg["Subject"] = "The Hive Case Metrics"
         msg.attach(MIMEText("Attached are the requested case metrics in .XLSX format."))
