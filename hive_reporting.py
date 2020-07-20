@@ -23,7 +23,7 @@ import pandas as pd
 
 API = TheHiveApi("", "")
 SMTP_SERVER = ""
-SENT_TO = ""
+SENT_TO = "comma,seperated,as,needed"
 
 
 class SIRPPipeline(object):
@@ -268,7 +268,7 @@ class SIRPPipeline(object):
             SMTP_SERVER(str): mail server
         """
         msg = MIMEMultipart()
-        msg["From"] = ""
+        msg["From"] = "SIRP-Reminders@welltok.com"
         msg["To"] = SENT_TO
         msg["Subject"] = "The Hive Case Metrics"
         msg.attach(MIMEText("Attached are the requested case metrics in .XLSX format."))
@@ -279,7 +279,7 @@ class SIRPPipeline(object):
         msg.attach(part)
         smtp = smtplib.SMTP(SMTP_SERVER)
         smtp.starttls()
-        smtp.sendmail(msg["From"], [msg["To"]], msg.as_string())
+        smtp.sendmail(msg["From"], msg["To"].split(","), msg.as_string())
         smtp.quit()
 
     def run(self):
